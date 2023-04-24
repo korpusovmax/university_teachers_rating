@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Требования преподователей</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body class="dark-theme">
+    <main>
+        <div class="popup popup--hide">
+            <div class="popup__window">
+                типа окно регистрации
+            </div>
+        </div>
+        <h1>Выберите фильтры <br> или воспользуйтесь поиском</h1>
+        <section class="search_section">
+            <div class="search_section__frame">
+                <p class="search_section__label">Фильтры</p>
+                <div class="search_section__container">
+                    <div class="search_section__dropdown">
+                        <button class="search_section__dropdown_btn">Факультет</button>
+                        <div class="search_section__dropdown_content"></div>
+                        <div class="search_section__dropdown_icon"></div>
+                    </div>
+                    <div class="search_section__dropdown">
+                        <button class="search_section__dropdown_btn">Кафедра</button>
+                        <div class="search_section__dropdown_content"></div>
+                        <div class="search_section__dropdown_icon"></div>
+                    </div>
+                    <div class="search_section__dropdown">
+                        <button class="search_section__dropdown_btn">Предмет</button>
+                        <div class="search_section__dropdown_content"></div>
+                        <div class="search_section__dropdown_icon"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="search_section__frame">
+                <p class="search_section__label">Поиск по  ФИО</p>
+                <div class="search_section__container">
+                    <div class="search_section__icon"></div>
+                </div>
+            </div>
+        </section>
+        <section class="rates">
+            <article class="card">
+                <div class="card__up_line">
+                    <p class="card__full_name">
+                        Коновалов Всеволод Алексеевич
+                    </p>
+                    <p class="card__rating">
+                        <b>4.5/5</b>
+                    </p>
+                </div>
+                <div class="card__bottom_line">
+                    <div class="card__arrow_icon"></div>
+                </div>
+            </article>
+            <article class="card">
+                <div class="card__up_line">
+                    <p class="card__full_name">
+                        Коновалов Всеволод Алексеевич
+                    </p>
+                    <p class="card__rating">
+                        <b>4.5/5</b>
+                    </p>
+                </div>
+                <div class="card__bottom_line">
+                    <div class="card__arrow_icon"></div>
+                </div>
+            </article>
+            <article class="card">
+                <div class="card__up_line">
+                    <p class="card__full_name">
+                        Коновалов Всеволод Алексеевич
+                    </p>
+                    <p class="card__rating">
+                        <b>4.5/5</b>
+                    </p>
+                </div>
+                <div class="card__bottom_line">
+                    <div class="card__arrow_icon"></div>
+                </div>
+            </article>
+
+        </section>
+        <div style="display: flex; flex-direction: column; align-items: center; margin-top: 28px">
+            <button class="load_more">Загрузить ещё</button>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,329 @@
+:root {
+  --main_background: #EEEEEE;
+  --card_background: #C8D0E2;
+  --header_color: #5B4E4E;
+  --label_color: #000000;
+}
+
+.dark-theme {
+  --main_background: #282828;
+  --card_background: #FFFFFF;
+  --header_color: #FFFFFF;
+  --label_color: #FFFFFF;
+}
+
+* {
+  font-family: "Verdana";
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: var(--main_background);
+}
+
+main {
+  background: var(--main_background);
+  text-align: center;
+  padding-bottom: 28px;
+}
+
+h1 {
+  margin-top: 60px;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 61px;
+  align-items: center;
+  text-align: center;
+  display: block;
+  color: var(--header_color);
+}
+
+h2 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 35px;
+  line-height: 43px;
+  color: #FFFFFF;
+  text-align: left;
+}
+
+.paragraph {
+  font-style: normal;
+  font-weight: 200;
+  opacity: 70%;
+  font-size: 25px;
+  line-height: 30px;
+  color: #FFFFFF;
+}
+
+.search_section {
+  margin-top: 67px;
+  padding: 0 20px 0 20px;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.search_section__label {
+  margin-bottom: 15px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--label_color);
+}
+.search_section__icon {
+  min-width: 16px;
+  min-height: 16px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("images/search.png");
+}
+.search_section__container {
+  min-width: 280px;
+  min-height: 58px;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+  background: var(--card_background);
+  border-radius: 30px;
+  flex-wrap: wrap;
+}
+.search_section__dropdown {
+  height: 58px;
+  display: flex;
+  align-items: center;
+}
+.search_section__dropdown_btn {
+  background: none;
+  border: none;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 30px;
+}
+.search_section__dropdown_icon {
+  min-width: 8px;
+  min-height: 8px;
+  margin-right: 20px;
+  margin-left: 40px;
+  background-image: url("images/icon.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.popup {
+  display: grid;
+  grid-template-columns: 55%;
+  justify-content: center;
+  min-width: 100%;
+  min-height: 100%;
+  align-items: center;
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  position: fixed;
+  top: 0px;
+}
+.popup__window {
+  height: 70%;
+  background: #4B6EB9;
+  border-radius: 20px;
+}
+@media screen and (max-width: 640px) {
+  .popup {
+    grid-template-columns: 1fr;
+  }
+  .popup__window {
+    height: 100%;
+    border-radius: 0;
+  }
+}
+
+.popup--hide {
+  display: none;
+}
+
+.rates {
+  padding: 0 30px 0 30px;
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 1000px) {
+  .rates {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: var(--card_background);
+  border-radius: 20px;
+  padding: 30px;
+}
+.card__up_line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card__full_name {
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 49px;
+  color: #000000;
+}
+.card__rating {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 49px;
+  color: #000000;
+}
+.card__bottom_line {
+  margin-top: 40px;
+}
+.card__arrow_icon {
+  width: 42px;
+  height: 42px;
+  background-image: url(images/arrow_icon.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+@media screen and (max-width: 550px) {
+  .card__full_name {
+    font-size: 28px;
+    line-height: 35px;
+  }
+  .card__rating {
+    font-size: 32px;
+    line-height: 35px;
+  }
+  .card__bottom_line {
+    margin-top: 32px;
+  }
+  .card__arrow_icon {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.card:hover {
+  background-color: #4B6EB9;
+  transition: background-color 300ms ease;
+}
+.card:hover .card__full_name, .card:hover .card__rating {
+  color: #FFFFFF;
+}
+.card:hover .card__arrow_icon {
+  background-image: url(images/arrow_icon_white.png);
+}
+
+.load_more {
+  background-color: #C8D0E2;
+  border-radius: 16px;
+  padding: 10px 20px;
+  color: #000000;
+  border: none;
+  float: right;
+  font-size: 16px;
+  line-height: 10px;
+  width: 180px;
+  height: 40px;
+}
+
+.load_more:hover {
+  background-color: #4B6EB9;
+  color: #FFFFFF;
+}
+
+.rating_section {
+  margin: 40px 148px 0 148px;
+}
+
+.rating_card {
+  margin-top: 40px;
+}
+.rating_card__content {
+  padding: 22px;
+  border-radius: 20px;
+  text-align: left;
+  background-color: #FFFFFF;
+}
+.rating_card__rating_score {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 30px;
+  color: #000000;
+}
+.rating_card__rating_text {
+  margin-top: 12px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #000000;
+}
+.rating_card__content_main {
+  border: 4px solid #FFFFFF;
+  background: #4B6EB9;
+  background-image: url(images/back.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.rating_card__content_main .rating_card__rating_score {
+  color: #FFFFFF;
+}
+.rating_card__content_main .rating_card__rating_text {
+  color: #FFFFFF;
+}
+.rating_card__rate_rating {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: left;
+  color: #FFFFFF;
+}
+.rating_card__like {
+  margin-left: 8px;
+  width: 24px;
+  height: 24px;
+  background-image: url(images/like.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.rating_card__dislike {
+  margin-left: 8px;
+  width: 24px;
+  height: 24px;
+  background-image: url(images/dislike.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.rate_panel {
+  margin-top: 48px;
+  padding-bottom: 18px;
+  display: flex;
+  justify-content: space-between;
+}
+.rate_panel__text {
+  text-decoration: none;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 35px;
+  line-height: 43px;
+  color: #FFFFFF;
+}
+.rate_panel a {
+  text-decoration: underline;
+  text-decoration-color: #4B6EB9;
+}
+.rate_panel a:hover {
+  color: #4B6EB9;
+}
+
+/*# sourceMappingURL=style.css.map */
