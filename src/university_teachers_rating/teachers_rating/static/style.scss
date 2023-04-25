@@ -155,7 +155,7 @@ h2 {
   padding: 0 30px 0 30px;
   margin-top: 60px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 30px;
   flex-wrap: wrap;
 
@@ -165,15 +165,20 @@ h2 {
 
 }
 
+
 .card {
   background: var(--card_background);
   border-radius: 20px;
   padding: 30px;
   //max-width: 530px;
   //min-width: 400px;
-  &__up_line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  &__left_line {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    flex-direction: column;
     justify-content: space-between;
   }
   &__full_name {
@@ -181,6 +186,8 @@ h2 {
     font-size: 40px;
     line-height: 49px;
     color: #000000;
+    overflow-wrap: anywhere;
+    text-align: left;
   }
   &__rating {
     font-style: normal;

@@ -43,46 +43,22 @@
             </div>
         </section>
         <section class="rates">
+            {% for card_item in cards %}
             <article class="card">
-                <div class="card__up_line">
+                <div class="card__left_line">
                     <p class="card__full_name">
-                        Коновалов Всеволод Алексеевич
+                        {{card_item.name}}
                     </p>
-                    <p class="card__rating">
-                        <b>4.5/5</b>
-                    </p>
-                </div>
-                <div class="card__bottom_line">
                     <div class="card__arrow_icon"></div>
-                </div>
-            </article>
-            <article class="card">
-                <div class="card__up_line">
-                    <p class="card__full_name">
-                        Коновалов Всеволод Алексеевич
-                    </p>
-                    <p class="card__rating">
-                        <b>4.5/5</b>
-                    </p>
-                </div>
-                <div class="card__bottom_line">
-                    <div class="card__arrow_icon"></div>
-                </div>
-            </article>
-            <article class="card">
-                <div class="card__up_line">
-                    <p class="card__full_name">
-                        Коновалов Всеволод Алексеевич
-                    </p>
-                    <p class="card__rating">
-                        <b>4.5/5</b>
-                    </p>
-                </div>
-                <div class="card__bottom_line">
-                    <div class="card__arrow_icon"></div>
-                </div>
-            </article>
 
+                </div>
+                <div class="card__right_line">
+                    <p class="card__rating">
+                        <b>4.5/5</b>
+                    </p>
+                </div>
+            </article>
+            {% endfor %}
         </section>
         <div style="display: flex; flex-direction: column; align-items: center; margin-top: 28px">
             <button class="load_more">Загрузить ещё</button>
