@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 
 # local backend functions
@@ -16,6 +18,19 @@ def get_avg_rating():
 # TODO: лайк
 # TODO: дизлайк
 
+# Rest API
+class CardsView(APIView):
+    def get(self, request):
+        res = [{
+                'name': 'Konovalov'
+            }, {
+                'name': 'длиннаааааааяфамилия имя отчество'
+            }, {
+                'name': 'Кривой Дмитрий Александрович'
+            }, {
+                'name': 'Васеков Олень Попович'
+            }]
+        return Response({'cards': res})
 
 # Create your views here.
 
