@@ -30,7 +30,9 @@ class CardsView(APIView):
             }, {
                 'name': 'Васеков Олень Попович'
             }]
-        return Response({'cards': res})
+        data = {'cards': res}
+        # return Response({'cards': res})
+        return render(request, 'card.html', context=data)
 
 # Create your views here.
 
