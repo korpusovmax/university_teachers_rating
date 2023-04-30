@@ -7,4 +7,3 @@ element.addEventListener("click", async function (e) {
         document.getElementsByClassName('rates')[0].innerHTML += result;
     });
 }, false);
-//e = DOM.getElementsByClassName('load_more');
