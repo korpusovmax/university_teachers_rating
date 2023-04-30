@@ -35,12 +35,15 @@
                     </div>
                 </div>
             </div>
-            <div class="search_section__frame">
+            <form class="search_section__frame">
                 <p class="search_section__label">Поиск по  ФИО</p>
                 <div class="search_section__container">
                     <div class="search_section__icon"></div>
+                    <label>
+                        <input type="text" class="search_section__input">
+                    </label>
                 </div>
-            </div>
+            </form>
         </section>
         <section class="rates">
             {% for card_item in cards %}
