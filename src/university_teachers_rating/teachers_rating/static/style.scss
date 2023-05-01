@@ -150,6 +150,31 @@ h2 {
     background: #7C51A1;
     border-radius: 20px;
   }
+  &__title{
+    margin-bottom: 5px;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 43px;
+    /* identical to box height */
+    display: flex;
+    align-items: center;
+    text-align: justify;
+    color: #FFFFFF;
+  }
+  &__text{
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+    color: #FFFFFF;
+  }
+  &__input{
+    background: #282828;
+    border-radius: 20px;
+    margin-top: 10px;
+  }
   @media screen and (max-width: 640px){
     grid-template-columns: 1fr;
     &__window {
