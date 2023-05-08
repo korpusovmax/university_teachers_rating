@@ -24,9 +24,10 @@ class CardsView(APIView):
     def get(self, request):
         # 7850576
         conn = psycopg2.connect(
-            host="localhost",
-            database="mydatabase",
-            user="myusername",
+            host="192.168.0.1",
+            port="54321",
+            database="Professors_views",
+            user="posgtres",
             password="7850576"
         )
 
