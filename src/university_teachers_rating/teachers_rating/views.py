@@ -22,20 +22,19 @@ def get_avg_rating():
 # Rest API
 class CardsView(APIView):
     def get(self, request):
-        # 7850576
         conn = psycopg2.connect(
-            host="192.168.0.1",
+            host="localhost",
             port="54321",
             database="Professors_views",
-            user="posgtres",
+            user="postgres",
             password="7850576"
         )
 
         cur = conn.cursor()
 
-        with open('../university_teachers_rating/prof_views.sql', 'r') as file:
-            sql = file.read()
-
+        #with open('../prof_views.sql', 'r') as file:
+        #    sql = file.read()
+        #    print(sql)
         cur.execute('SELECT fio FROM professors_data')
 
         # res = [{
