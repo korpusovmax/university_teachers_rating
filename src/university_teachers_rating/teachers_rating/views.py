@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 import psycopg2
-
+from DBopen import DBopen
 
 # local backend functions
 def send_rate():
@@ -22,20 +22,8 @@ def get_avg_rating():
 # Rest API
 class CardsView(APIView):
     def get(self, request):
-        conn = psycopg2.connect(
-            host="localhost",
-            port="54321",
-            database="Professors_views",
-            user="postgres",
-            password="7850576"
-        )
-
-        cur = conn.cursor()
-
-        #with open('../prof_views.sql', 'r') as file:
-        #    sql = file.read()
-        #    print(sql)
-        cur.execute('SELECT fio FROM professors_data')
+        cur = DBopen()
+        cur.request('SELECT fio FROM professors_data')
 
         # res = [{
         #         'name': 'Konovalov'
@@ -48,8 +36,6 @@ class CardsView(APIView):
         #     }]
         res = [{'name': row[0]} for row in cur.fetchall()[:6]]
 
-        cur.close()
-        conn.close()
         data = {'cards': res}
         # return Response({'cards': res})
         return render(request, 'card.html', context=data)
