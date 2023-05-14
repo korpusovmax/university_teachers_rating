@@ -1,7 +1,7 @@
 import psycopg2
 
 
-class DBopen():
+class DatabaseOpen():
     def __init__(self):
         self.conn = psycopg2.connect(
             host="localhost",
@@ -11,12 +11,11 @@ class DBopen():
             password="7850576"
         )
 
-        self.cursor = self.conn.cursor()
+        self.curs = self.conn.cursor()
 
     def request(self, req):
-        res = self.cursor.execute('SELECT fio FROM professors_data')
+        res = self.curs.execute(req).fetchall()
+        self.curs.close()
+        self.curs = self.conn.cursor()
 
-        self.cursor.close()
-        self.cursor = self.conn.cursor()
-
-        return res
+        return res.fetchall()

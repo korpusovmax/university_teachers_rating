@@ -2,7 +2,8 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 import psycopg2
-from DBopen import DBopen
+from .DBopen import DatabaseOpen
+
 
 # local backend functions
 def send_rate():
@@ -11,10 +12,12 @@ def send_rate():
     # айди аккаунта отправителя
     pass
 
+
 def get_avg_rating():
     # TODO: получение средней оценки препода
     # оценка должна окруляться до десятых, а если число круглое не выводить .0
     pass
+
 
 # TODO: лайк
 # TODO: дизлайк
@@ -22,9 +25,10 @@ def get_avg_rating():
 # Rest API
 class CardsView(APIView):
     def get(self, request):
-        cur = DBopen()
-        cur.request('SELECT fio FROM professors_data')
-
+        conn = psycopg2.connect(host="localhost", port="54321", database="Professors_views", user="postgres",
+                                password="7850576")
+        cur = conn.cursor()
+        cur.execute('SELECT fio FROM professors_data')
         # res = [{
         #         'name': 'Konovalov'
         #     }, {
@@ -34,11 +38,16 @@ class CardsView(APIView):
         #     }, {
         #         'name': 'Васеков Олень Попович'
         #     }]
-        res = [{'name': row[0]} for row in cur.fetchall()[:6]]
+
+        database = DatabaseOpen()
+        req = database.request('SELECT fio FROM professors_data')
+
+        res = [{'name': row[0]} for row in req[:6]]
 
         data = {'cards': res}
         # return Response({'cards': res})
         return render(request, 'card.html', context=data)
+
 
 # Create your views here.
 
