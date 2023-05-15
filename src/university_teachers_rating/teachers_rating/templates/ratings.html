@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Отзывы</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body class="dark-theme">
+  <main>
+    <header>
+      <h1>{{ professor.name }}</h1>
+      <p class="paragraph" style="margin-top: 20px">Факультет: <b>{{ professor.faculty_id }}</b></p>
+      <p class="paragraph">Кафедра: <b>{{ professor.cafedra_id }}</b></p>
+      <p class="paragraph">Предметы: <b>{{ professor.subject_name }}</b></p>
+    </header>
+    <section class="rating_section">
+      <h2>Самый полезный отзыв</h2>
+      <div class="rating_card">
+        <div class="rating_card__content rating_card__content_main">
+          <p class="rating_card__rating_score">{{ ratings.0.rate }}/5</p>
+          <p class="rating_card__rating_text">{{ ratings.0.text }}</p>
+        </div>
+        <div style="display: flex; align-items: center; margin-top: 15px;">
+          <p class="rating_card__rate_rating">Оцените отзыв:</p>
+          <div class="rating_card__like"></div>
+          <div class="rating_card__dislike"></div>
+        </div>
+      </div>
+
+      <div class="rate_panel">
+        <p href="" class="rate_panel__text">Остальные отзывы</p>
+        <a href="" class="rate_panel__text">Оставить свой отзыв</a>
+      </div>
+
+      {% for rating in ratings|slice:"1:" %}
+      <div class="rating_card">
+        <div class="rating_card__content">
+          <p class="rating_card__rating_score">{{ rating.rate }}/5</p>
+          <p class="rating_card__rating_text">{{ rating.text }}</p>
+        </div>
+        <div style="display: flex; align-items: center; margin-top: 15px;">
+          <p class="rating_card__rate_rating">Оцените отзыв:</p>
+          <div class="rating_card__like"></div>
+          <div class="rating_card__dislike"></div>
+        </div>
+      </div>
+      {% endfor %}
+    </section>
+  </main>
+</body>
+</html>

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 import psycopg2
-from .DBopen import DatabaseOpen
+
 
 N = 0
 
@@ -75,3 +75,28 @@ def index(request):
     N += 6
     data = {'cards': cards}
     return render(request, 'index.html', context=data)
+
+def ratings(request, professor_id):
+    print('opened page with rating of professor with id:', professor_id)
+    professor = {
+        'name': 'Кривой Дмитрий Александрович',
+        'subject_name': 'Нет данных',
+        'faculty_id': 'Факультет информационных технологий',
+        'cafedra_id': 'Нет данных'
+    }
+    ratings_list = [
+        {
+            'rate': 4,
+            'text': 'Тут примерный текст отзыва о преподе. Кстати, так как это первый отзыв в списке - он отобразится как лучший отзыв'
+        },
+        {
+            'rate': 2,
+            'text': 'Тут примерный текст плохого отзыва о преподе.'
+        },
+        {
+            'rate': 1,
+            'text': 'Тут примерный текст отвратительного отзыва о преподе. анон плиз:3'
+        }
+    ]
+    data = {'ratings': ratings_list, 'professor': professor}
+    return render(request, 'ratings.html', context=data)
