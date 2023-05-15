@@ -4,6 +4,8 @@ from rest_framework.response import Response
 import psycopg2
 from .DBopen import DatabaseOpen
 
+N = 0
+
 
 # local backend functions
 def send_rate():
@@ -25,6 +27,7 @@ def get_avg_rating():
 # Rest API
 class CardsView(APIView):
     def get(self, request):
+        global N
         conn = psycopg2.connect(host="localhost", port="54321", database="Professors_views", user="postgres",
                                 password="7850576")
         cur = conn.cursor()
@@ -39,11 +42,11 @@ class CardsView(APIView):
         #         'name': 'Васеков Олень Попович'
         #     }]
 
-        database = DatabaseOpen()
-        req = database.request('SELECT fio FROM professors_data')
+        # database = DatabaseOpen()
+        # req = database.request('SELECT fio FROM professors_data')
 
-        res = [{'name': row[0]} for row in req[:6]]
-
+        res = [{'name': row[0]} for row in cur.fetchall()[N:N + 4]]
+        N += 4
         data = {'cards': res}
         # return Response({'cards': res})
         return render(request, 'card.html', context=data)
@@ -52,15 +55,23 @@ class CardsView(APIView):
 # Create your views here.
 
 def index(request):
-    cards = [{
-        'name': 'Konovalov'
-    }, {
-        'name': 'длиннаааааааяфамилия имя отчество'
-    }, {
-        'name': 'Кривой Дмитрий Александрович'
-    }, {
-        'name': 'Васеков Олень Попович'
-    }]
+    global N
+    # cards = [{
+    #    'name': 'Konovalov'
+    # }, {
+    #    'name': 'длиннаааааааяфамилия имя отчество'
+    # }, {
+    #    'name': 'Кривой Дмитрий Александрович'
+    # }, {
+    #    'name': 'Васеков Олень Попович'
+    # }]
 
+    conn = psycopg2.connect(host="localhost", port="54321", database="Professors_views", user="postgres",
+                            password="7850576")
+    cur = conn.cursor()
+    cur.execute('SELECT fio FROM professors_data')
+
+    cards = [{'name': row[0]} for row in cur.fetchall()[N:N + 6]]
+    N += 6
     data = {'cards': cards}
     return render(request, 'index.html', context=data)
